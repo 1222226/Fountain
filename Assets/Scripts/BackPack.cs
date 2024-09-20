@@ -13,11 +13,11 @@ public class BackPack : MonoBehaviour
     public TextMeshProUGUI block1Text;
     public TextMeshProUGUI block3Text;
     public TextMeshProUGUI block4Text;
-    public TextMeshProUGUI block5Text;// 显示计数器的Text
+    public TextMeshProUGUI block5Text;
     public GameObject block1Prefab;
     public GameObject block3Prefab;
     public GameObject block4Prefab;
-    public GameObject block5Prefab;// Block的预制件
+    public GameObject block5Prefab;
     public Transform player; 
 
     public int block1Count = 0;
@@ -33,7 +33,7 @@ public class BackPack : MonoBehaviour
     }
     private void Start()
     {
-        // 隐藏UI
+   
         uiPanel.SetActive(false);
 
         // 监听按钮点击事件
@@ -42,10 +42,9 @@ public class BackPack : MonoBehaviour
         block4Button.onClick.AddListener(() => SpawnBlock("PBlock4"));
         block5Button.onClick.AddListener(() => SpawnBlock("PBlock5"));
 
-        // 订阅销毁Block5的事件
+        
        
 
-        // 更新初始的计数器文本
         UpdateCounterText();
     }
 
@@ -64,13 +63,13 @@ public class BackPack : MonoBehaviour
         CollectPuzzlePiece.OnBlockCollected -= IncrementBlockCount;
     }
 
-    // 切换UI面板的显示和隐藏
+  
     private void ToggleUIPanel()
     {
         uiPanel.SetActive(!uiPanel.activeSelf);
     }
 
-    // 更新计数器文本显示
+    
     private void UpdateCounterText()
     {
         block1Text.text = block1Count.ToString();
@@ -79,7 +78,7 @@ public class BackPack : MonoBehaviour
         block5Text.text = block5Count.ToString();// 显示当前的block数量
     }
 
-    // 生成新的Block5
+   
     private void SpawnBlock(string blockname)
     {   Debug.Log("SpawnBlock called for: " + blockname);
         switch
@@ -92,7 +91,7 @@ public class BackPack : MonoBehaviour
                     Vector3 spawnPosition = player.position + player.forward * 1f+player.up * 1f; // 
                     Instantiate(block1Prefab, spawnPosition, Quaternion.identity);
 
-                    block1Count--; // 生成后减少计数器
+                    block1Count--; 
                 }
 
                 break;
@@ -100,7 +99,7 @@ public class BackPack : MonoBehaviour
             case "PBlock3":
                 if (block3Count > 0)
                 {
-                    // 在玩家前方生成Block3
+                    
                     Vector3 spawnPosition = player.position + player.forward * 1f + player.up * 1f; // 
                     Instantiate(block3Prefab, spawnPosition, Quaternion.identity);
 
@@ -111,28 +110,28 @@ public class BackPack : MonoBehaviour
             case "PBlock4":
                 if (block4Count > 0)
                 {
-                    // 在玩家前方生成Block4
+                  
                     Vector3 spawnPosition = player.position + player.forward * 1f+player.up*1f; // 
                     Instantiate(block4Prefab, spawnPosition, Quaternion.identity);
 
-                    block4Count--; // 生成后减少计数器
+                    block4Count--;
                 }
                 break;
 
             case "PBlock5":
                 if (block5Count > 0)
                 {
-                    // 在玩家前方生成Block5
+                    
                     Vector3 spawnPosition = player.position + player.forward * 1f+player.up * 1f; // 
                     Instantiate(block5Prefab, spawnPosition, Quaternion.identity);
 
-                    block5Count--; // 生成后减少计数器
+                    block5Count--; 
                 }
                 break;
         }
             UpdateCounterText(); // 更新计数器文本
 
-            uiPanel.SetActive(false); // 隐藏UI
+            uiPanel.SetActive(false); 
     }
 
 
@@ -175,7 +174,7 @@ public class BackPack : MonoBehaviour
                 block5Count++;
                 break;
         }
-         // 计数器增加
-        UpdateCounterText(); // 更新显示的文本
+         
+        UpdateCounterText(); 
     }
 }

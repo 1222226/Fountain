@@ -14,12 +14,11 @@ public class GrabbedObjectTrigger : MonoBehaviour
         Debug.Log("thisObjectName: " + thisObjectName);
         Debug.Log("Collider Object: " + colliderObjectName);
 
-        // 检查名字是否相同
         if (thisObjectName == colliderObjectName)
         {
             Debug.Log("Names match, performing actions...");
-            Destroy(other.gameObject); // 销毁抓取的物体
-            MappingBlock.SetActive(true); // 激活碰撞器挂载的物体
+            Destroy(other.gameObject); 
+            MappingBlock.SetActive(true); 
         }
     }
 }

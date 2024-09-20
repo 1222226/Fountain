@@ -4,13 +4,13 @@ using System;
 
 public class MakePuzzle : MonoBehaviour
 {
-    public GrabInteractor rightControllerGrabInteractor; // 右手控制器的抓取交互器
+    public GrabInteractor rightControllerGrabInteractor; 
 
     private GameObject grabbedObject;
 
     private void Update()
     {
-        // 检查是否抓取了物体
+       
         if (rightControllerGrabInteractor != null && rightControllerGrabInteractor.HasSelectedInteractable)
         {
             grabbedObject = rightControllerGrabInteractor.SelectedInteractable.transform.gameObject;
@@ -41,7 +41,7 @@ public class MakePuzzle : MonoBehaviour
                 
                 Destroy(grabbedObject);
 
-                // 激活碰撞器挂载的物体
+                
                 other.gameObject.GetComponent<MeshRenderer>().enabled=true;
             }
         }
