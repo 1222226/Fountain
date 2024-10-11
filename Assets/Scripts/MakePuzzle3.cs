@@ -4,6 +4,7 @@ public class GrabbedObjectTrigger : MonoBehaviour
 {
 
     public GameObject MappingBlock;
+    public GameObject GameFlow;
     private void OnTriggerEnter(Collider other)
     {
         string thisObjectName = gameObject.name;
@@ -18,7 +19,12 @@ public class GrabbedObjectTrigger : MonoBehaviour
         {
             Debug.Log("Names match, performing actions...");
             Destroy(other.gameObject); 
-            MappingBlock.SetActive(true); 
+            MappingBlock.SetActive(true);
+            GameFlow.GetComponent<GameFlow>().puzzleMake++;
+            if (GameFlow.GetComponent<GameFlow>().puzzleMake == 4)
+            {
+                GameFlow.GetComponent<GameFlow>().EndGame();
+            }
         }
     }
 }
