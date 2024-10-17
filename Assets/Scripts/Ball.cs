@@ -13,10 +13,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
         //ball = GetComponent<GameObject>();
-        if (ballType != true )
-        {
-            gameObject.transform.localScale= Vector3.one*0.1f;
-        }
+        
     }
 
     // Update is called once per frame
@@ -46,3 +43,4 @@ public class Ball : MonoBehaviour
         }
     }
 }
+

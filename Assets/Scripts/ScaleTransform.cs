@@ -13,10 +13,15 @@ public class ScaleTransform : MonoBehaviour
     public int shrinkBallNum;
     public int zoomBallNum;
     public GameObject blackScreenImage;
+    public GameObject blackScreenText1;
+    public GameObject blackScreenText2;
+
+    public SlowDown slowDownScript;
 
     public TextMeshProUGUI textZoom;
     public TextMeshProUGUI textShrink;
     public GameObject uiFollowView;
+    
 
 
     private bool fastSlowMode = false;
@@ -35,10 +40,7 @@ public class ScaleTransform : MonoBehaviour
         {
             ScaleChage();
         }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            fastSlowMode = !fastSlowMode;
-        }
+        
         /*if (OVRInput.GetDown(OVRInput.Button.Three))
         {
             if (scaleL)
@@ -56,7 +58,7 @@ public class ScaleTransform : MonoBehaviour
 
     void ScaleChage()
     {
-        if (fastSlowMode)
+        if (slowDownScript.isSlowedDown==true)
         {
 
             StartCoroutine(BlackScreenAndTransform());
@@ -70,16 +72,35 @@ public class ScaleTransform : MonoBehaviour
 
     IEnumerator BlackScreenAndTransform()
     {
-
+        
         blackScreenImage.SetActive(true);
+        blackScreenText1.SetActive(true);
+        blackScreenText2.SetActive(false);
 
-
+       
         yield return new WaitForSeconds(2f);
 
+        
+        blackScreenText1.SetActive(false);
+        blackScreenText2.SetActive(true);
 
+        if (scaleL) 
+        {
+            blackScreenText2.GetComponent<TextMeshProUGUI>().text = "You Become Small";
+        }
+        else 
+        {
+            blackScreenText2.GetComponent<TextMeshProUGUI>().text = "You Become Normal";
+        }
+
+       
+        yield return new WaitForSeconds(2f);
+
+        
         blackScreenImage.SetActive(false);
+        blackScreenText2.SetActive(false);
 
-
+        
         PerformScaleChange();
     }
 
@@ -94,7 +115,8 @@ public class ScaleTransform : MonoBehaviour
             textShrink.text = shrinkBallNum.ToString();
             //player.GetComponent<ThirdPersonCharacter>().m_MoveSpeedMultiplier = 3f;
             uiFollowView.GetComponent<CameraFollow>().distanceFromCamera = uiFollowView.GetComponent<CameraFollow>().distanceFromCamera/10;
-            uiFollowView.GetComponent<CameraFollow>().heightOffset = uiFollowView.GetComponent<CameraFollow>().heightOffset /2.5f;
+            uiFollowView.GetComponent<CameraFollow>().heightOffset = uiFollowView.GetComponent<CameraFollow>().heightOffset /5f;
+            scaleL = false;
         }
         else if (zoomStaus == true && zoomBallNum > 0)
         {
@@ -106,7 +128,8 @@ public class ScaleTransform : MonoBehaviour
             zoomBallNum--;
             textZoom.text = zoomBallNum.ToString();
             uiFollowView.GetComponent<CameraFollow>().distanceFromCamera = uiFollowView.GetComponent<CameraFollow>().distanceFromCamera * 10;
-            uiFollowView.GetComponent<CameraFollow>().heightOffset = uiFollowView.GetComponent<CameraFollow>().heightOffset *2.5f;
+            uiFollowView.GetComponent<CameraFollow>().heightOffset = uiFollowView.GetComponent<CameraFollow>().heightOffset *5f;
+            scaleL = true;
         }
     }
 }

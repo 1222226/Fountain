@@ -9,6 +9,7 @@ public class CollectPuzzlePiece : MonoBehaviour
     public static event Action<string> OnBlockCollected;
 
     private GameObject grabbedObject;
+    
 
     private void Update()
     {
@@ -28,6 +29,8 @@ public class CollectPuzzlePiece : MonoBehaviour
                     // 触发事件，并传递被销毁的Block名称
                     OnBlockCollected?.Invoke(blockName);
                 }
+
+               
             }
         }
     }

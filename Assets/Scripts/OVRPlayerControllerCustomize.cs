@@ -29,7 +29,7 @@ using UnityEngine.InputSystem;
 /// </summary>
 [RequireComponent(typeof(CharacterController))]
 [HelpURL("https://developer.oculus.com/documentation/unity/unity-sf-distancegrab/")]
-public class OVRPlayerController : MonoBehaviour
+public class OVRPlayerControllerCustomize : MonoBehaviour
 {
     /// <summary>
     /// The rate acceleration during movement.
@@ -160,7 +160,7 @@ public class OVRPlayerController : MonoBehaviour
     private float FallSpeed = 0.0f;
     private OVRPose? InitialPose;
     public float InitialYRotation { get; private set; }
-    private float MoveScaleMultiplier = 1.0f;
+    public float MoveScaleMultiplier = 1.0f;
     private float RotationScaleMultiplier = 1.0f;
 
     // It is rare to want to use mouse movement in VR, so ignore the mouse by default.
@@ -176,6 +176,8 @@ public class OVRPlayerController : MonoBehaviour
     private bool ReadyToSnapTurn;
 
     private bool playerControllerEnabled = false;
+
+    public SlowDown slowDownScript;
 
     // Input Actions for new input system
 #if ENABLE_INPUT_SYSTEM && UNITY_NEW_INPUT_SYSTEM_INSTALLED
@@ -451,7 +453,9 @@ public class OVRPlayerController : MonoBehaviour
                 moveInfluence *= 2.0f;
             }
 #endif
-#endif
+#endif      
+
+            if (slowDownScript.isSlowedDown == false) { 
             if (OVRInput.GetDown(OVRInput.Button.PrimaryThumbstick))
             {
                 Debug.Log("Primary Thumbstick Pressed");
@@ -463,7 +467,7 @@ public class OVRPlayerController : MonoBehaviour
 
                 MoveScaleMultiplier = MoveScaleMultiplier / 2;  // 将速度加倍
             }
-
+}
             Quaternion ort = transform.rotation;
             Vector3 ortEuler = ort.eulerAngles;
             ortEuler.z = ortEuler.x = 0f;

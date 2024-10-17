@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform cameraTransform; 
-    public float distanceFromCamera = 2.0f; 
+    public float distanceFromCamera = 1.0f; 
     public float heightOffset = 1.0f; 
 
     void Update()
