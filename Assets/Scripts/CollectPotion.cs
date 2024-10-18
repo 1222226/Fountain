@@ -30,14 +30,30 @@ public class CollectPotion : MonoBehaviour
                     
                 }
 
-                if (grabbedObject.tag==("SPotion"))
+                if (grabbedObject != null && grabbedObject.tag == "SPotion")
                 {
-                    Player.GetComponent<ScaleTransform>().shrinkBallNum++;
-                    Player.GetComponent<ScaleTransform>().textZoom.text = Player.GetComponent<ScaleTransform>().zoomBallNum.ToString();
-                    Destroy(grabbedObject);
-                    grabbedObject = null;
+                    ScaleTransform scaleTransform = Player.GetComponent<ScaleTransform>();
 
+                    if (scaleTransform != null)
+                    {
+                        scaleTransform.shrinkBallNum++;
 
+                        if (scaleTransform.textZoom != null)
+                        {
+                            scaleTransform.textZoom.text = scaleTransform.zoomBallNum.ToString();
+                        }
+                        else
+                        {
+                            Debug.LogError("textZoom is not assigned in the ScaleTransform component.");
+                        }
+
+                        Destroy(grabbedObject);
+                        grabbedObject = null;
+                    }
+                    else
+                    {
+                        Debug.LogError("ScaleTransform component is missing from the Player object.");
+                    }
                 }
 
 

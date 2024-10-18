@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+//backpack class to manage the backpack
 public class BackPack : MonoBehaviour
 {
-    //public OVRInput.Button showUIPanelButton = OVRInput.Button.Two; // B 键控制UI
+   
     public GameObject uiPanel; 
     public Button block1Button;
     public Button block3Button;
@@ -23,7 +23,7 @@ public class BackPack : MonoBehaviour
     public int block1Count = 0;
     public int block3Count = 0;
     public int block4Count = 0;
-    public int block5Count = 0; // 初始计数器为0
+    public int block5Count = 0; 
 
     private void OnEnable()
     {
@@ -36,7 +36,7 @@ public class BackPack : MonoBehaviour
    
         uiPanel.SetActive(false);
 
-        // 监听按钮点击事件
+        
         block1Button.onClick.AddListener(() => SpawnBlock("PBlock1"));
         block3Button.onClick.AddListener(() => SpawnBlock("PBlock3"));
         block4Button.onClick.AddListener(() => SpawnBlock("PBlock4"));
@@ -50,7 +50,7 @@ public class BackPack : MonoBehaviour
 
     private void Update()
     {
-        // 检测 B 键是否按下，控制UI显示/隐藏
+        
         if (OVRInput.GetDown(OVRInput.Button.Two))
         {
             ToggleUIPanel();
@@ -59,7 +59,7 @@ public class BackPack : MonoBehaviour
 
     private void OnDestroy()
     {
-        // 在脚本销毁时取消订阅事件，避免内存泄漏
+        
         CollectPuzzlePiece.OnBlockCollected -= IncrementBlockCount;
     }
 
@@ -71,11 +71,11 @@ public class BackPack : MonoBehaviour
 
     
     private void UpdateCounterText()
-    {
+    {   //show the count of each block
         block1Text.text = block1Count.ToString();
         block3Text.text = block3Count.ToString();
         block4Text.text = block4Count.ToString();
-        block5Text.text = block5Count.ToString();// 显示当前的block数量
+        block5Text.text = block5Count.ToString();
     }
 
    
@@ -87,7 +87,7 @@ public class BackPack : MonoBehaviour
             case "PBlock1":
                 if (block1Count > 0)
                 {
-                    // 在玩家前方生成Block1
+                    //Create a new block
                     Vector3 spawnPosition = player.position + player.forward * 1f+player.up * 1f; // 
                     Instantiate(block1Prefab, spawnPosition, Quaternion.identity);
 
@@ -129,7 +129,7 @@ public class BackPack : MonoBehaviour
                 }
                 break;
         }
-            UpdateCounterText(); // 更新计数器文本
+            UpdateCounterText(); 
 
             uiPanel.SetActive(false); 
     }

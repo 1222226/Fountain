@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GrabbedObjectTrigger : MonoBehaviour
+public class MakePuzzle3 : MonoBehaviour
 {
 
     public GameObject MappingBlock;

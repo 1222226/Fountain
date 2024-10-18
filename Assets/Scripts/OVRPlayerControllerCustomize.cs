@@ -726,4 +726,10 @@ public class OVRPlayerControllerCustomize : MonoBehaviour
             transform.rotation = Quaternion.Euler(euler);
         }
     }
+
+    public void JumpBackwards()
+    {
+        MoveThrottle += new Vector3(0, transform.lossyScale.y * JumpForce*0.5f, 0);
+        MoveThrottle += transform.forward * -1 * 0.5f;
+    }
 }

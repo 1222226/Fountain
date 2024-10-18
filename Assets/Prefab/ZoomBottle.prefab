@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 414211524246058682}
   - component: {fileID: 6786318874739350178}
   - component: {fileID: 6665824212630770689}
-  - component: {fileID: 6438825364747044621}
   - component: {fileID: 6793947201086114607}
   - component: {fileID: -2393179508767567538}
   - component: {fileID: -7578793775649332953}
@@ -56,7 +55,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577400156468351160}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -91,28 +90,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6438825364747044621
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577400156468351160}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7601493551111660949, guid: edcc86a903182d0429c0d7b2c727fec0, type: 3}
 --- !u!114 &6793947201086114607
 MonoBehaviour:
   m_ObjectHideFlags: 0
