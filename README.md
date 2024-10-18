@@ -64,4 +64,4 @@ The assets used in this project are subject to the Unity Asset Store End User Li
 7. [Contact] 
     For any questions or support, please contact:
     - wang liao - w.liao1@student.uq.edu.au
-    - [GitHub Profile](link to profile)
+    - [GitHub Profile](https://github.com/1222226/Fountain)
