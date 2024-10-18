@@ -9,10 +9,10 @@ public class CollectPuzzlePiece : MonoBehaviour
     public static event Action<string> OnBlockCollected;
 
     private GameObject grabbedObject;
-    
+    //collect puzzle piece while grabbing
 
     private void Update()
-    {
+    {   
         if (OVRInput.GetDown(OVRInput.Button.One))
         {
           
@@ -26,7 +26,7 @@ public class CollectPuzzlePiece : MonoBehaviour
                     Destroy(grabbedObject); 
                     grabbedObject = null; 
 
-                    // 触发事件，并传递被销毁的Block名称
+                    
                     OnBlockCollected?.Invoke(blockName);
                 }
 

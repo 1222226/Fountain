@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    
+    // show the status of Player HP
     public float maxHealth = 100f;
  
     private float currentHealth;

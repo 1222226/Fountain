@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ScaleTransform : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Transform the player's scale
     private bool zoomStaus;
     public bool scaleL = true;
     public GameObject player;

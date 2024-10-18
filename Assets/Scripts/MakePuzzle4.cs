@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MakePuzzle4 : MonoBehaviour
 {
-
+    //Check if the puzzle piece is correctly placed
     public GameObject MappingBlock;
     public GameObject GameFlow;
     private void OnTriggerEnter(Collider other)

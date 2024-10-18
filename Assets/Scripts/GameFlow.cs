@@ -26,7 +26,7 @@ public class GameFlow : MonoBehaviour
         testNextButton.onClick.AddListener(LoadNextLevel);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         
@@ -47,13 +47,13 @@ public class GameFlow : MonoBehaviour
 
     void LoadNextLevel()
     {
-        // 恢复时间流动
+        
         Time.timeScale = 1f;
 
-        // 获取当前场景的索引
+       
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        // 加载下一个场景（索引 + 1）
+        
         SceneManager.LoadScene(currentSceneIndex + 1);
     }
 }

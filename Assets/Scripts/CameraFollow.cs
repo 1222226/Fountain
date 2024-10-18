@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    //Make UI follow the camera
     public Transform cameraTransform; 
     public float distanceFromCamera = 1.0f; 
     public float heightOffset = 1.0f; 
@@ -12,7 +13,7 @@ public class CameraFollow : MonoBehaviour
     {
         
         Vector3 newPosition = cameraTransform.position + cameraTransform.forward * distanceFromCamera;
-        newPosition.y += heightOffset; // 添加可选的高度偏移
+        newPosition.y += heightOffset; 
 
        
         transform.position = newPosition;
